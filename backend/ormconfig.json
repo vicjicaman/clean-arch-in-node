@@ -1,9 +1,9 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "data",
    "port": 5432,
    "username": "postgres",
-   "password": "Password1",
+   "password": "",
    "database": "clean-arch-demo",
    "synchronize": true,
    "logging": false,

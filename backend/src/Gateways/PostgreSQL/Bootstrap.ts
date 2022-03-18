@@ -2,17 +2,18 @@ import { asValue, AwilixContainer } from "awilix";
 import { Connection, createConnection } from "typeorm";
 
 async function connectWithRetry(): Promise<Connection> {
+  console.log(process.env.TYPEORM_URL)
   try {
     return await createConnection({
       database: "clean-arch-demo",
       username: "postgres",
-      password: "Password1",
+      password: "",
       logging: "all",
 
       synchronize: true,
 
       type: "postgres",
-      url: process.env.TYPEORM_URL,
+      url: process.env.TYPEORM_URL || "postgres://postgres@data:5432",
       entities: [__dirname + "/DTOs/*.ts"],
     });
   } catch (err) {

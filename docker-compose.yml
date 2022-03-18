@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  data:
+    image: bitnami/postgresql:14
+    ports:
+      - "5432:5432"
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - "./data:/bitnami/postgresql"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - PORT_SERVICE=4000
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - data
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+  data-admin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: ;L;m8-L+B^8V4A}n
+    ports:
+      - "5050:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"

@@ -1,6 +1,6 @@
-# Introduction 
+# Introduction
 
-An example of Clean Architecture principles applied to a REST API back-end service in Node.js and TypeScript. 
+An example of Clean Architecture principles applied to a REST API back-end service in Node.js and TypeScript.
 
 
 # Getting Started
@@ -20,6 +20,14 @@ An example of Clean Architecture principles applied to a REST API back-end servi
    -  or use the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) VSCode extension (you'll be prompted to install it on the very first workspace load)
    -  go to `rest-client` top-level folder and look at any of the  `.http` files
 
+
+# Docker compose
+
+Create the data folder with the required rights:
+`mkdir data;sudo chown -R 1001:1001 data/`
+
+Start docker compose
+`docker-compose up`
 
 # Contribute
 
